@@ -4,9 +4,9 @@
 function App() {
 
   return (
-    <div className="bg-red-500">
+    <div>
       <>icono</>
-      <h1>Altavista Residences</h1>
+      <h1 className="text-purple">Altavista Residences</h1>
       <p>Invest Smart, Live Better</p>
       <>video</>
       <p>Discover in our <b>exclusive webinar</b> the real state investment opportunity you're been waiting for</p>
