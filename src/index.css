@@ -5,12 +5,14 @@
   --color-subtitle: #FFFFFF;
   --color-button: #705FFA;
   --color-hover-button: #3D3294;
+  --color-highlight: #64C7E5;
 }
 
 :root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
+  background-image: url("./assets/fondo.png");
   
 }
 
