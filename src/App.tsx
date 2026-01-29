@@ -6,6 +6,71 @@ import frame from './assets/icons/frame.svg'
 import diamond from './assets/icons/diamond.svg'
 import investment from './assets/icons/investment.svg'
 import water from './assets/icons/water.svg'
+import stars from './assets/icons/stars.svg'
+
+
+ type Feature = {
+          icon: string;
+          title: string;
+          text: string;
+        };
+
+const features: Feature[] = [
+  {
+    icon: frame,
+    title: "Premium Location",
+    text: "In the heart of the city's most valued area",
+  },
+  {
+    icon: diamond,
+    title: "Premium Location",
+    text: "Top quality materials and exclusive architectural design",
+  },
+  {
+    icon: investment,
+    title: "Premium Location",
+    text: "Appreciation projection exceeding 20% annually",
+  },
+  {
+    icon: water,
+    title: "Premium Location",
+    text: "Spaces designed for an exceptional lifestyle",
+  },
+];
+
+ type Experiences = {
+          stars: string;
+          review: string;
+          name: string;
+          position: string;
+        };
+
+const experience: Experiences[] = [
+  {
+    stars: stars,
+    review: "“The best investment decision I made. The return exceeded my expectations and the team was always available for any questions.”",
+    name: "Michael Thompson",
+    position: "Investor",
+  },
+  {
+    stars: stars,
+    review: "“Altavista is not just a place to live, it's a smart investment. The project's appreciation has been exceptional from day one”",
+    name: "Sarah Mitchell",
+    position: "Entrepreneur",
+  },
+  {
+    stars: stars,
+    review: "“The level of finishes and strategic location make Altavista a unique opportunity. I'm very satisfied with my investment.”",
+    name: "Jennifer Davis",
+    position: "Professional",
+  },
+   {
+    stars: stars,
+    review: "“I've invested in several projects, but Altavista stands out for its professionalism and transparency. Highly recommended.”",
+    name: "Robert Rodríguez",
+    position: "Investor",
+  }
+];
 
 function App() {
 
@@ -34,7 +99,7 @@ function App() {
           <button className="cursor-pointer"><img src={arrow} className='w-14'/></button>
         </div>  
       </section>
-      <section className='mb-40 border-solid border border-purple/30 rounded-lg p-8 w-xl'> 
+      <div className='mb-40 border-solid border border-purple/30 rounded-lg p-8 w-xl'> 
         <div>
           <h3 className='text-3xl font-semibold'>Register for the webinar</h3>
           <p className='text-sm mb-6 mt-2'>Complete your details and secure your spot at the 
@@ -58,10 +123,10 @@ function App() {
             with project information.
           </p>
         </form>
-      </section>
-      <section className='flex flex-col items-center justify-between h-139'>
-        <h2 className='text-5xl'>About <b className='text-purple'>Altavista Residences</b></h2>
-        <p className='text-lg'>A project designed for those who want to invest in their future without 
+      </div>
+      <section className='flex flex-col items-center '>
+        <h2 className='text-5xl mb-5 font-semibold'>About <b className='text-purple'>Altavista Residences</b></h2>
+        <p className='text-lg mb-5 text-subtitle'>A project designed for those who want to invest in their future without 
           compromising their lifestyle
         </p>
         <div className='grid grid-cols-2 gap-5 w-6xl'>
@@ -77,34 +142,37 @@ function App() {
             exceptional investment potential.
           </p>
         </div>
-        <section className='flex justify-between gap-5 mt-10'>
-          <div className='flex flex-col items-center px-5 w-65.5 h-62.75'>
-            <img src={frame} className='w-35'/>
-            <h3 className='text-subtitle text-lg font-semibold'>Premium Location</h3>
-            <p className='text-base text-textIcons'>In the heart of the city's most valued area</p>
-          </div>
-          <div className='flex flex-col items-center px-5 w-65.5'>
-            <img src={diamond} className='w-35'/>
-            <h3 className='text-subtitle text-lg font-semibold'>Premium Location</h3>
-            <p className='text-base text-textIcons'>Top quality materials and exclusive architectural design</p>
-          </div>
-          <div className='flex flex-col items-center px-5 w-65.5'>
-            <img src={investment} className='w-35'/>
-            <h3 className='text-subtitle text-lg font-semibold'>Premium Location</h3>
-            <p className='text-base text-textIcons'>Appreciation projection exceeding 20% annually</p>
-          </div>
-          <div className='flex flex-col items-center px-5 w-65.5'>
-            <img src={water} className='w-35'/>
-            <h3 className='text-subtitle text-lg font-semibold'>Premium Location</h3>
-            <p className='text-base text-textIcons'>Spaces designed for an exceptional lifestyle</p>
-          </div>
+        <section className="flex justify-between gap-5 mt-10">
+          {features.map((value, index) => (
+            <div key={index} className='flex flex-col items-center px-5 w-65.5 h-62.75 border-solid border border-purple/30 rounded-lg'>
+              <img src={value.icon} className='w-35'/>
+              <h3 className='text-subtitle text-lg font-semibold'>{value.title}</h3>
+              <p className='text-base text-textIcons'>{value.text}</p>
+            </div>
+          ))}
         </section>
-        
       </section>
       
-     
+      <section className='mt-40'>
+        <h2 className='text-5xl text-subtitle font-semibold mb-5'>What Our <b className='text-purple'>Investors</b> Say</h2>
+        <p className='text-lg mb-5'>Learn from the experiences of those who are already part of Altavista Residences</p>
+        <article className='grid grid-cols-2 gap-5'>
+          {experience.map((value, index) => (
+            <blockquote key={index} className='flex flex-col items-start px-5 pt-5 w-137  border-solid border border-purple/30 rounded-lg'>
+              <img src={value.stars} className='w-35 mb-3'/>
+              <p className='text-base text-subtitle text-left '>{value.review}</p>
+              <hr className="w-full h-px bg-backgroundLine border-none my-5" />
+              <h3 className='text-subtitle text-sm'>{value.name}</h3>
+              <p className='text-textIcons text-sm mb-9'>{value.position}</p>
+            </blockquote>
+          ))}
+        </article>
+      </section>
+    
     </div>
   )
 }
 
 export default App
+
+
