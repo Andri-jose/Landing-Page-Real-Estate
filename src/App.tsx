@@ -72,6 +72,30 @@ const experience: Experiences[] = [
   }
 ];
 
+type Faq = {
+          question: string;
+          answer: string;
+        };
+
+const faqs: Faq[] = [
+  {
+    question: "What is the expected return on investment?",
+    answer: "The expected return on investment is projected to exceed 20% annually."
+  },
+  {
+    question: "How long is the investment period?",
+    answer: "The investment period is typically 5-10 years, depending on the specific unit."
+  },
+  {
+    question: "Can I rent out my unit?",
+    answer: "Yes, investors can choose to rent out their units for additional income."
+  },
+  {
+    question: "Is there a minimum investment amount?",
+    answer: "The minimum investment amount is $100,000."
+  }
+];
+
 function App() {
 
   return (
@@ -125,26 +149,28 @@ function App() {
         </form>
       </div>
       <section className='flex flex-col items-center '>
-        <h2 className='text-5xl mb-5 font-semibold'>About <b className='text-purple'>Altavista Residences</b></h2>
-        <p className='text-lg mb-5 text-subtitle'>A project designed for those who want to invest in their future without 
-          compromising their lifestyle
+        <h2 className='text-5xl mb-5 font-semibold'>About <b className='text-purple'>Altavista Residences</b>
+        </h2>
+        <p className='text-lg mb-5 text-subtitle'>A project designed for those who want to invest in their 
+          future without compromising their lifestyle
         </p>
         <div className='grid grid-cols-2 gap-5 w-6xl'>
           <img src={interior} className='w-full rounded-lg'/>
           <img src={amenities} className='w-full rounded-lg'/>
         </div>
         <div className='w-210 mt-10'>
-          <p className='text-lg text-subtitle mb-5'>Altavista Residences is a smart investment opportunity offering 120 
-            exclusive units across two 18-story towers, designed for comfort and long-term value.
+          <p className='text-lg text-subtitle mb-5'>Altavista Residences is a smart investment opportunity 
+            offering 120 exclusive units across two 18-story towers, designed for comfort and long-term value.
           </p>
-          <p className='text-lg text-subtitle'>Its prime location in one of the city's fastest-growing areas provides 
-            immediate access to shopping, education, and entertainment — blending premium living with 
-            exceptional investment potential.
+          <p className='text-lg text-subtitle'>Its prime location in one of the city's fastest-growing 
+            areas provides immediate access to shopping, education, and entertainment — blending premium 
+            living with exceptional investment potential.
           </p>
         </div>
         <section className="flex justify-between gap-5 mt-10">
           {features.map((value, index) => (
-            <div key={index} className='flex flex-col items-center px-5 w-65.5 h-62.75 border-solid border border-purple/30 rounded-lg'>
+            <div key={index} className='flex flex-col items-center px-5 w-65.5 h-62.75 border-solid border
+             border-purple/30 rounded-lg'>
               <img src={value.icon} className='w-35'/>
               <h3 className='text-subtitle text-lg font-semibold'>{value.title}</h3>
               <p className='text-base text-textIcons'>{value.text}</p>
@@ -152,13 +178,18 @@ function App() {
           ))}
         </section>
       </section>
-      
+      {/* reviews */}
       <section className='mt-40'>
-        <h2 className='text-5xl text-subtitle font-semibold mb-5'>What Our <b className='text-purple'>Investors</b> Say</h2>
-        <p className='text-lg mb-5'>Learn from the experiences of those who are already part of Altavista Residences</p>
+        <h2 className='text-5xl text-subtitle font-semibold mb-5'>What Our <b className='text-purple'>
+          Investors</b> Say
+        </h2>
+        <p className='text-lg mb-5'>Learn from the experiences of those who are already part of Altavista 
+          Residences
+        </p>
         <article className='grid grid-cols-2 gap-5'>
           {experience.map((value, index) => (
-            <blockquote key={index} className='flex flex-col items-start px-5 pt-5 w-137  border-solid border border-purple/30 rounded-lg'>
+            <blockquote key={index} className='flex flex-col items-start px-5 pt-5 w-137  border-solid border
+             border-purple/30 rounded-lg'>
               <img src={value.stars} className='w-35 mb-3'/>
               <p className='text-base text-subtitle text-left '>{value.review}</p>
               <hr className="w-full h-px bg-backgroundLine border-none my-5" />
@@ -167,6 +198,19 @@ function App() {
             </blockquote>
           ))}
         </article>
+      </section>
+      <section className='mt-40'>
+        <h2 className='text-5xl text-subtitle font-semibold mb-5'>Frequently Asked Questions</h2>
+        <p className='text-lg mb-5'>Learn from the experiences of those who are already part of Altavista 
+          Residences
+        </p>
+        <dl>
+          <dt>What type of investment does Altavista Residences offer?</dt>
+          <dd>Altavista Residences offers a real estate investment in high-end units with a strategic location. 
+            Investors can acquire units for rental or resale, with appreciation projections exceeding 20%
+            annually.
+          </dd>
+        </dl>
       </section>
     
     </div>
