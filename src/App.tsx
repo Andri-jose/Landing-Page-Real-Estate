@@ -79,20 +79,28 @@ type Faq = {
 
 const faqs: Faq[] = [
   {
-    question: "What is the expected return on investment?",
-    answer: "The expected return on investment is projected to exceed 20% annually."
+    question: "What type of investment does Altavista Residences offer?",
+    answer: "Altavista Residences offers a real estate investment in high-end units with a strategic location. Investors can acquire units for rental or resale, with appreciation projections exceeding 20% annually."
   },
   {
-    question: "How long is the investment period?",
-    answer: "The investment period is typically 5-10 years, depending on the specific unit."
+    question: "What payment options are available?",
+    answer: "The recommended payment period is at least 5 years to maximize returns. Investors can acquire units for rental or resale, with appreciation projections exceeding 20% annually."
   },
   {
-    question: "Can I rent out my unit?",
-    answer: "Yes, investors can choose to rent out their units for additional income."
+    question: "What is the estimated delivery date?",
+    answer: "The estimated delivery date is 2025. Investors can acquire units for rental or resale, with appreciation projections exceeding 20% annually."
   },
   {
-    question: "Is there a minimum investment amount?",
-    answer: "The minimum investment amount is $100,000."
+    question: "What amenities does the project include?",
+    answer: "The minimum amenities amount is $100,000. Investors can acquire units for rental or resale, with appreciation projections exceeding 20% annually."
+  },
+  {
+    question: "Can I visit a model unit?",
+    answer: "Yes, model units are available for visitation. Please contact our team to schedule a visit."
+  },
+  {
+    question: "What does the webinar include?",
+    answer: "The webinar includes an overview of the project, investment opportunities, and exclusive insights from our team."
   }
 ];
 
@@ -200,17 +208,19 @@ function App() {
         </article>
       </section>
       <section className='mt-40'>
-        <h2 className='text-5xl text-subtitle font-semibold mb-5'>Frequently Asked Questions</h2>
-        <p className='text-lg mb-5'>Learn from the experiences of those who are already part of Altavista 
+        <h2 className='text-5xl text-subtitle font-semibold mb-5'>Frequently Asked 
+          <b className='text-purple'> Questions</b>
+        </h2>
+        <p className='text-lg mb-5 text-subtitle font-semibold'>Learn from the experiences of those who are already part of Altavista 
           Residences
         </p>
-        <dl>
-          <dt>What type of investment does Altavista Residences offer?</dt>
-          <dd>Altavista Residences offers a real estate investment in high-end units with a strategic location. 
-            Investors can acquire units for rental or resale, with appreciation projections exceeding 20%
-            annually.
-          </dd>
-        </dl>
+        {faqs.map((faq, index) => (
+          <dl key={index} className='mb-6 text-left w-187.25 flex flex-col  px-5 border-solid border
+             border-purple/30 rounded-lg p-5'>
+            <dt className='text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
+            <dd className='text-base text-subtitle'>{faq.answer}</dd>
+          </dl>
+        ))}
       </section>
     
     </div>
