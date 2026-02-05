@@ -172,7 +172,7 @@ function App() {
         <p className='text-base md:text-lg mb-5 text-subtitle text-center'>A project designed for those who want to invest in their 
           future without compromising their lifestyle
         </p>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 w-full max-w-6xl mb-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5 w-full max-w-6xl mb-8'>
           <img src={interior} className='w-full rounded-lg'/>
           <img src={amenities} className='w-full rounded-lg'/>
         </div>
