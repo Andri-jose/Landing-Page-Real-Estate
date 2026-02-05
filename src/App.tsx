@@ -7,6 +7,9 @@ import diamond from './assets/icons/diamond.svg'
 import investment from './assets/icons/investment.svg'
 import water from './assets/icons/water.svg'
 import stars from './assets/icons/stars.svg'
+import { useState } from 'react'
+import arrowup from './assets/icons/arrowup.svg'
+import arrowdown from './assets/icons/arrowdown.svg'
 
 
  type Feature = {
@@ -105,6 +108,8 @@ const faqs: Faq[] = [
 ];
 
 function App() {
+
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
     <div className="flex justify-between flex-col items-center mx-auto text-center">
@@ -215,14 +220,46 @@ function App() {
           Residences
         </p>
         {faqs.map((faq, index) => (
-          <dl key={index} className='mb-6 text-left w-187.25 flex flex-col  px-5 border-solid border
-             border-purple/30 rounded-lg p-5'>
-            <dt className='text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
+          open === index ? (
+          <dl key={index} className='mb-5 text-left w-187.25 flex flex-col px-5 border-solid border
+             border-purple/30 rounded-lg p-5 cursor-pointer' onClick={() => setOpen(null)}>
+            <div className='flex justify-between items-center'>
+              <dt className='text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
+              <img src={arrowup} className='w-4' />
+            </div>
             <dd className='text-base text-subtitle'>{faq.answer}</dd>
           </dl>
-        ))}
+        ) : <dl key={index} className='mb-5 text-left w-187.25 flex flex-col px-5 border-solid border
+             border-purple/30 rounded-lg p-5 cursor-pointer' onClick={() => setOpen(index)}>
+              <div className='flex justify-between items-center'>
+                <dt className='text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
+                <img src={arrowdown} className='w-4' />
+              </div>
+          </dl> ))} 
       </section>
-    
+      <footer className='mt-40 mb-10 grid grid-cols-3 gap-1 w-7xl justify-between'>
+        <div className='flex flex-col items-start  '>
+          <img src={altavistaLogo} className='w-11 text-subtitle'/>
+          <p className='text-lg font-semibold text-purple'>Altavista Residences</p>
+          <p className='text-footer'>Invest Smart, Live Better</p>
+        </div>
+        <div className='flex flex-col items-start   '>
+          <h3 className='text-lg font-semibold'>Contact</h3>
+          <p className='text-footer'>info@altavistaresidences.com</p>
+          <p className='text-footer'>+54 11 5555-1234</p>
+          <p className='text-footer'>Av. Principal 1234, CABA</p>
+        </div>
+        <div className='flex flex-col items-start   '>
+          <h3 className='text-lg font-semibold'>Legal</h3>
+          <p className='text-footer'>Privacy Policy</p>
+          <p className='text-footer'>Terms and Conditions</p>
+          <p className='text-footer'>Consumer Protection</p>
+        </div>
+      </footer>
+      <footer className='flex flex-col items-center mt-12 mb-18'>
+         <p className='text-sm text-footer'>&copy; 2025 Altavista Residences. All rights reserved.</p>
+         <p className='text-sm text-footer'>Images are representative and may be subject to modifications. Please inquire about unit availability.</p>
+      </footer>
     </div>
   )
 }
