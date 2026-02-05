@@ -10,6 +10,7 @@ import stars from './assets/icons/stars.svg'
 import { useState } from 'react'
 import arrowup from './assets/icons/arrowup.svg'
 import arrowdown from './assets/icons/arrowdown.svg'
+import { useRef } from 'react'
 
 
  type Feature = {
@@ -110,6 +111,12 @@ const faqs: Faq[] = [
 function App() {
 
   const [open, setOpen] = useState<number | null>(0);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  const scrollToContact = () => {
+    if (contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: 'smooth' });
+    }}
 
   return (
     <div className="flex justify-between flex-col items-center mx-auto text-center">
@@ -118,147 +125,147 @@ function App() {
         <h1 className="text-purple text-6xl font-semibold">Altavista Residences</h1>
         <p className="text-subtitle text-2xl font-semibold">Invest Smart, Live Better</p>
       </header>
-      <section className='flex flex-col items-center'>   
+      <section className='flex flex-col items-center w-full px-4'>   
         <video 
         src="/video/proyecto inmobiliario video.mp4" 
         controls  
-        className='w-180.75'> 
+        className='w-full max-w-4xl'> 
         </video>
-        <div className='flex flex-col items-center justify-between h-54 mb-40'>
-          <p className='mt-5 text-lg'>Discover in our 
-            <b className='text-highlight'>exclusive webinar
-            </b> 
-            the real state investment opportunity you're been waiting for
+        <div className='flex flex-col items-center justify-between gap-6 mb-20 md:mb-40 px-4'>
+          <p className='mt-5 text-base md:text-lg text-center'>Discover in our <b className='text-highlight'> exclusive webinar </b>  
+             the real state investment opportunity you're been waiting for
           </p>
           <button className='bg-button hover:bg-hover-button text-white font-semibold 
-          py-4 px-4 rounded-lg cursor-pointer w-60 text-lg'>Register for webinar
+          py-4 px-6 rounded-lg cursor-pointer w-full md:w-60 text-base md:text-lg' onClick={scrollToContact}>Register for webinar
           </button>
-          <button className="cursor-pointer"><img src={arrow} className='w-14'/></button>
+          <button className="cursor-pointer" onClick={scrollToContact}><img src={arrow} className='w-12 md:w-14'/></button>
         </div>  
       </section>
-      <div className='mb-40 border-solid border border-purple/30 rounded-lg p-8 w-xl'> 
+      <section className='mb-20 md:mb-40 border-solid border border-purple/30 rounded-lg p-6 md:p-8 w-full max-w-2xl mx-4' ref={contactRef}> 
         <div>
-          <h3 className='text-3xl font-semibold'>Register for the webinar</h3>
+          <h3 className='text-2xl md:text-3xl font-semibold'>Register for the webinar</h3>
           <p className='text-sm mb-6 mt-2'>Complete your details and secure your spot at the 
             exclusive presentation
           </p>
         </div>
-        <form className='flex flex-col items-start justify-evenly h-95 gap-2'>
+        <form className='flex flex-col items-start justify-evenly gap-4'>
           <label htmlFor="full-name">Full Name</label>
           <input type="text" id="full-name" placeholder="John Smith" 
-            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full mb-3' />
+            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full' />
           <label htmlFor="email">Email</label>
           <input type="email" id="email" placeholder="John@example.com" 
-            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full mb-3' />
+            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full' />
           <label htmlFor="phone">Phone</label>
           <input type="tel" id="phone" placeholder="+1(555)123-4567" 
-            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full mb-3' />
+            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full' />
           <button className='bg-button hover:bg-hover-button text-white font-semibold py-2 
-            px-4 rounded-lg cursor-pointer w-full text-lg items-center mx-auto mt-2'>Confirm Registration
+            px-4 rounded-lg cursor-pointer w-full text-lg items-center mx-auto mt-4'>Confirm Registration
           </button>
           <p className='text-xs mt-4'>By registering, you agree to be contacted via whatsapp and email 
             with project information.
           </p>
         </form>
-      </div>
-      <section className='flex flex-col items-center '>
-        <h2 className='text-5xl mb-5 font-semibold'>About <b className='text-purple'>Altavista Residences</b>
+      </section>
+      <section className='flex flex-col items-center px-4 w-full'>
+        <h2 className='text-3xl md:text-5xl mb-5 font-semibold text-center'>About <b className='text-purple'>Altavista Residences</b>
         </h2>
-        <p className='text-lg mb-5 text-subtitle'>A project designed for those who want to invest in their 
+        <p className='text-base md:text-lg mb-5 text-subtitle text-center'>A project designed for those who want to invest in their 
           future without compromising their lifestyle
         </p>
-        <div className='grid grid-cols-2 gap-5 w-6xl'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 w-full max-w-6xl mb-8'>
           <img src={interior} className='w-full rounded-lg'/>
           <img src={amenities} className='w-full rounded-lg'/>
         </div>
-        <div className='w-210 mt-10'>
-          <p className='text-lg text-subtitle mb-5'>Altavista Residences is a smart investment opportunity 
+        <div className='w-full max-w-4xl mb-8'>
+          <p className='text-base md:text-lg text-subtitle mb-5'>Altavista Residences is a smart investment opportunity 
             offering 120 exclusive units across two 18-story towers, designed for comfort and long-term value.
           </p>
-          <p className='text-lg text-subtitle'>Its prime location in one of the city's fastest-growing 
+          <p className='text-base md:text-lg text-subtitle'>Its prime location in one of the city's fastest-growing 
             areas provides immediate access to shopping, education, and entertainment — blending premium 
             living with exceptional investment potential.
           </p>
         </div>
-        <section className="flex justify-between gap-5 mt-10">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 w-full px-2">
           {features.map((value, index) => (
-            <div key={index} className='flex flex-col items-center px-5 w-65.5 h-62.75 border-solid border
+            <div key={index} className='flex flex-col items-center px-4 py-6 border-solid border
              border-purple/30 rounded-lg'>
-              <img src={value.icon} className='w-35'/>
-              <h3 className='text-subtitle text-lg font-semibold'>{value.title}</h3>
-              <p className='text-base text-textIcons'>{value.text}</p>
+              <img src={value.icon} className='w-20 md:w-35 mb-4'/>
+              <h3 className='text-subtitle text-base md:text-lg font-semibold text-center'>{value.title}</h3>
+              <p className='text-sm md:text-base text-textIcons text-center'>{value.text}</p>
             </div>
           ))}
         </section>
       </section>
       {/* reviews */}
-      <section className='mt-40'>
-        <h2 className='text-5xl text-subtitle font-semibold mb-5'>What Our <b className='text-purple'>
+      <section className='mt-20 md:mt-40 px-4 w-full'>
+        <h2 className='text-3xl md:text-5xl text-subtitle font-semibold mb-5 text-center'>What Our <b className='text-purple'>
           Investors</b> Say
         </h2>
-        <p className='text-lg mb-5'>Learn from the experiences of those who are already part of Altavista 
+        <p className='text-base md:text-lg mb-8 text-center'>Learn from the experiences of those who are already part of Altavista 
           Residences
         </p>
-        <article className='grid grid-cols-2 gap-5'>
+        <article className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 max-w-6xl mx-auto'>
           {experience.map((value, index) => (
-            <blockquote key={index} className='flex flex-col items-start px-5 pt-5 w-137  border-solid border
+            <blockquote key={index} className='flex flex-col items-start px-5 pt-5 border-solid border
              border-purple/30 rounded-lg'>
-              <img src={value.stars} className='w-35 mb-3'/>
-              <p className='text-base text-subtitle text-left '>{value.review}</p>
+              <img src={value.stars} className='w-24 md:w-35 mb-3'/>
+              <p className='text-sm md:text-base text-subtitle text-left '>{value.review}</p>
               <hr className="w-full h-px bg-backgroundLine border-none my-5" />
               <h3 className='text-subtitle text-sm'>{value.name}</h3>
-              <p className='text-textIcons text-sm mb-9'>{value.position}</p>
+              <p className='text-textIcons text-xs md:text-sm mb-6'>{value.position}</p>
             </blockquote>
           ))}
         </article>
       </section>
-      <section className='mt-40'>
-        <h2 className='text-5xl text-subtitle font-semibold mb-5'>Frequently Asked 
+      <section className='mt-20 md:mt-40 px-4 w-full'>
+        <h2 className='text-3xl md:text-5xl text-subtitle font-semibold mb-5 text-center'>Frequently Asked 
           <b className='text-purple'> Questions</b>
         </h2>
-        <p className='text-lg mb-5 text-subtitle font-semibold'>Learn from the experiences of those who are already part of Altavista 
+        <p className='text-base md:text-lg mb-8 text-subtitle font-semibold text-center'>Learn from the experiences of those who are already part of Altavista 
           Residences
         </p>
-        {faqs.map((faq, index) => (
-          open === index ? (
-          <dl key={index} className='mb-5 text-left w-187.25 flex flex-col px-5 border-solid border
-             border-purple/30 rounded-lg p-5 cursor-pointer' onClick={() => setOpen(null)}>
-            <div className='flex justify-between items-center'>
-              <dt className='text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
-              <img src={arrowup} className='w-4' />
-            </div>
-            <dd className='text-base text-subtitle'>{faq.answer}</dd>
-          </dl>
-        ) : <dl key={index} className='mb-5 text-left w-187.25 flex flex-col px-5 border-solid border
-             border-purple/30 rounded-lg p-5 cursor-pointer' onClick={() => setOpen(index)}>
-              <div className='flex justify-between items-center'>
-                <dt className='text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
-                <img src={arrowdown} className='w-4' />
+        <div className='max-w-4xl mx-auto'>
+          {faqs.map((faq, index) => (
+            open === index ? (
+            <dl key={index} className='mb-4 text-left w-full flex flex-col px-4 md:px-5 border-solid border
+               border-purple/30 rounded-lg p-4 md:p-5 cursor-pointer' onClick={() => setOpen(null)}>
+              <div className='flex justify-between items-center gap-4'>
+                <dt className='text-base md:text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
+                <img src={arrowup} className='w-4 shrink-0' />
               </div>
-          </dl> ))} 
+              <dd className='text-sm md:text-base text-subtitle/80'>{faq.answer}</dd>
+            </dl>
+          ) : <dl key={index} className='mb-4 text-left w-full flex flex-col px-4 md:px-5 border-solid border
+               border-purple/30 rounded-lg p-4 md:p-5 cursor-pointer' onClick={() => setOpen(index)}>
+                <div className='flex justify-between items-center gap-4'>
+                  <dt className='text-base md:text-lg font-semibold text-subtitle mb-2'>{faq.question}</dt>
+                  <img src={arrowdown} className='w-4 shrink-0' />
+                </div>
+            </dl> ))}
+        </div>
       </section>
-      <footer className='mt-40 mb-10 grid grid-cols-3 gap-1 w-7xl justify-between'>
-        <div className='flex flex-col items-start  '>
+      <footer className='mt-20 md:mt-40 mb-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-40 px-4 '>
+        <div className='flex flex-col items-center md:items-start'>
           <img src={altavistaLogo} className='w-11 text-subtitle'/>
           <p className='text-lg font-semibold text-purple'>Altavista Residences</p>
-          <p className='text-footer'>Invest Smart, Live Better</p>
+          <p className='text-footer text-center md:text-left'>Invest Smart, Live Better</p>
         </div>
-        <div className='flex flex-col items-start   '>
-          <h3 className='text-lg font-semibold'>Contact</h3>
-          <p className='text-footer'>info@altavistaresidences.com</p>
-          <p className='text-footer'>+54 11 5555-1234</p>
-          <p className='text-footer'>Av. Principal 1234, CABA</p>
+        <div className='flex flex-col items-center md:items-start'>
+          <h3 className='text-lg font-semibold text-center md:text-left'>Contact</h3>
+          <p className='text-footer text-center md:text-left'>info@altavistaresidences.com</p>
+          <p className='text-footer text-center md:text-left'>+54 11 5555-1234</p>
+          <p className='text-footer text-center md:text-left'>Av. Principal 1234, CABA</p>
         </div>
-        <div className='flex flex-col items-start   '>
-          <h3 className='text-lg font-semibold'>Legal</h3>
-          <p className='text-footer'>Privacy Policy</p>
-          <p className='text-footer'>Terms and Conditions</p>
-          <p className='text-footer'>Consumer Protection</p>
+        <div className='flex flex-col items-center md:items-start'>
+          <h3 className='text-lg font-semibold text-center md:text-left'>Legal</h3>
+          <p className='text-footer text-center md:text-left'>Privacy Policy</p>
+          <p className='text-footer text-center md:text-left'>Terms and Conditions</p>
+          <p className='text-footer text-center md:text-left'>Consumer Protection</p>
         </div>
       </footer>
-      <footer className='flex flex-col items-center mt-12 mb-18'>
-         <p className='text-sm text-footer'>&copy; 2025 Altavista Residences. All rights reserved.</p>
-         <p className='text-sm text-footer'>Images are representative and may be subject to modifications. Please inquire about unit availability.</p>
+      <footer className='flex flex-col items-center mt-8 md:mt-12 mb-8 md:mb-18 px-4'>
+         <p className='text-xs md:text-sm text-footer text-center'>&copy; 2025 Altavista Residences. All rights reserved.</p>
+         <p className='text-xs md:text-sm text-footer text-center'>Images are representative and may be subject to modifications. Please inquire about unit availability.</p>
       </footer>
     </div>
   )
