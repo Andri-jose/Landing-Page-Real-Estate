@@ -11,6 +11,8 @@ import { useState } from 'react'
 import arrowup from './assets/icons/arrowup.svg'
 import arrowdown from './assets/icons/arrowdown.svg'
 import { useRef } from 'react'
+import Form from './form'
+import FormSubmitted from './form-submitted'
 
 
  type Feature = {
@@ -108,6 +110,9 @@ const faqs: Faq[] = [
   }
 ];
 
+
+
+
 function App() {
 
   const [open, setOpen] = useState<number | null>(0);
@@ -117,6 +122,8 @@ function App() {
     if (contactRef.current) {
       contactRef.current.scrollIntoView({ behavior: 'smooth' });
     }}
+
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
 
   return (
     <div className="flex justify-between flex-col items-center mx-auto text-center">
@@ -135,36 +142,26 @@ function App() {
           <p className='mt-5 text-base md:text-lg text-center'>Discover in our <b className='text-highlight'> exclusive webinar </b>  
              the real state investment opportunity you're been waiting for
           </p>
-          <button className='bg-button hover:bg-hover-button text-white font-semibold 
-          py-4 px-6 rounded-lg cursor-pointer w-full md:w-60 text-base md:text-lg' onClick={scrollToContact}>Register for webinar
+          <button
+            className="
+              bg-linear-to-r from-button to-mainbutton hover:from-hover-button hover:to-hover-button
+              text-white font-semibold py-4 px-6 rounded-lg cursor-pointer w-full md:w-60 text-base md:text-lg
+              transition-all duration-300" onClick={scrollToContact}
+            >
+            Register for webinar
           </button>
+
           <button className="cursor-pointer" onClick={scrollToContact}><img src={arrow} className='w-12 md:w-14'/></button>
         </div>  
       </section>
       <section className='mb-20 md:mb-40 border-solid border border-purple/30 rounded-lg p-6 md:p-8 w-full max-w-2xl mx-4' ref={contactRef}> 
         <div>
-          <h3 className='text-2xl md:text-3xl font-semibold'>Register for the webinar</h3>
+          <h3 className='text-2xl md:text-3xl font-semibold text-subtitle'>Register for the webinar</h3>
           <p className='text-sm mb-6 mt-2'>Complete your details and secure your spot at the 
             exclusive presentation
           </p>
         </div>
-        <form className='flex flex-col items-start justify-evenly gap-4'>
-          <label htmlFor="full-name">Full Name</label>
-          <input type="text" id="full-name" placeholder="John Smith" 
-            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full' />
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" placeholder="John@example.com" 
-            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full' />
-          <label htmlFor="phone">Phone</label>
-          <input type="tel" id="phone" placeholder="+1(555)123-4567" 
-            className='border-solid border-2 border-white/30 rounded-lg p-2 w-full' />
-          <button className='bg-button hover:bg-hover-button text-white font-semibold py-2 
-            px-4 rounded-lg cursor-pointer w-full text-lg items-center mx-auto mt-4'>Confirm Registration
-          </button>
-          <p className='text-xs mt-4'>By registering, you agree to be contacted via whatsapp and email 
-            with project information.
-          </p>
-        </form>
+        {isSubmitted ? <FormSubmitted /> : <Form setIsSubmitted={setIsSubmitted}/>}
       </section>
       <section className='flex flex-col items-center px-4 w-full'>
         <h2 className='text-3xl md:text-5xl mb-5 font-semibold text-center'>About <b className='text-purple'>Altavista Residences</b>
