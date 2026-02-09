@@ -134,7 +134,7 @@ function App() {
       </header>
       <section className='flex flex-col items-center w-full px-4'>   
         <video 
-        src="/video/proyecto inmobiliario video.mp4" 
+        src="./video/proyecto inmobiliario video.mp4" 
         controls  
         className='w-full max-w-4xl'> 
         </video>
